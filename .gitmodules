@@ -1,0 +1,6 @@
+[submodule "mastermind-r16"]
+	path = mastermind-r16
+	url = https://github.com/K9-guardian/mastermind-r16
+[submodule "lexicon"]
+	path = lexicon
+	url = https://github.com/K9-guardian/lexicon
