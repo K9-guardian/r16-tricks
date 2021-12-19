@@ -1,0 +1,6 @@
+[submodule "lexicon"]
+	path = lexicon
+	url = ./lexicon/
+[submodule "mastermind-r16"]
+	path = mastermind-r16
+	url = ./mastermind-r16/
