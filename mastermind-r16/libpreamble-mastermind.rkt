@@ -1,0 +1,13 @@
+#lang racket
+'((define vazcoin (call-trick 'libvazcoin #f))
+  (define funds (vazcoin '(query)))
+  (define (get-words) (call-trick 'libwords-mastermind #f))
+  (define get-phrase (call-trick 'libtrick-mastermind #f))
+  (define (toggle-emotes) (call-trick 'libphrase-mastermind "toggle"))
+  (define-values (get-user-data toggle-gambling) (call-trick 'libvazcoin-mastermind #f))
+  (define-values (read-stats update-stats) (call-trick 'libstats-mastermind #f))
+  (define-values (add-history clear-history get-history) (call-trick 'libhistory-mastermind #f))
+  (define-values (pot-add _ _1) (call-trick 'libcommunitypot #f))
+  (define loss-amt 5)
+  (define win-amt 40)
+  (define hit (call-trick 'libphrase-mastermind 'hit)))
