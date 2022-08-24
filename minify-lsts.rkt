@@ -1,6 +1,4 @@
-; @echo off
-; Racket.exe "%~f0" %*
-; exit /b
+#!/usr/bin/env racket
 #lang racket/base
 (require racket/port)
 
