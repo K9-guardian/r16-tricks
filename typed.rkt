@@ -1,5 +1,6 @@
 #lang racket
-(require pict) 
+(require "backend.rkt")
+(require pict)
 
 (define read-one (curryr (call-trick 'read-n #f) 1))
 (define gifify (call-trick 'libtrick-gif #f))

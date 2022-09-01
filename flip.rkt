@@ -1,3 +1,5 @@
+#lang racket
+(require "backend.rkt")
 (define gifify (call-trick 'libtrick-gif #f))
 (define get-image (call-trick 'libtrick-scrape-image #f))
 (define image-flip (call-trick 'libtrick-image-flip #f))
