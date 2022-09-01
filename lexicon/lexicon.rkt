@@ -1,14 +1,14 @@
 #lang racket
 (require threading)
-(require "libdata-lexicon.rkt")
+(define entries (call-with-input-file "lexicon-src" read))
 (define (call-trick name _argument)
   (case name
     [(libdata-lexicon) entries]
     [(libsplit-text*) (λ (x _) (list x))]))
 (define (make-attachment payload _name _mime) payload)
-(define string-args "rod of the depths")
+(define string-args "tater")
 
-(define lexicon-base "https://botaniamod.net/lexicon.php#")
+(define lexicon-base "https://botaniamod.net/lexicon.html#")
 (define custom-inputs
   '(("tater" . "Tiny Potato")
     ("pew pew" . "Rod of the Unstable Reservoir")))
@@ -40,12 +40,12 @@
              (cdr entry))))
      (argmax car)
      (match _
-         [(cons 0 _) "No matches were found!"]
-         [(list _ bookmark text)
-          (values
-           (~a lexicon-base bookmark)
-           (make-attachment
-            (string->bytes/utf-8
-             (string-join ((call-trick 'libsplit-text* #f) text 80) "\n"))
-            "matched.txt"
-            ".txt"))]))
+       [(cons 0 _) "No matches were found!"]
+       [(list _ bookmark text)
+        (values
+         (~a lexicon-base bookmark)
+         (make-attachment
+          (string->bytes/utf-8
+           (string-join ((call-trick 'libsplit-text* #f) text 80) "\n"))
+          "matched.txt"
+          ".txt"))]))
