@@ -1,6 +1,6 @@
 #lang racket
 (require threading)
-(define entries (call-with-input-file "lexicon-src" read))
+(define entries (call-with-input-file "lexicon-src.txt" read))
 (define (call-trick name _argument)
   (case name
     [(libdata-lexicon) entries]
