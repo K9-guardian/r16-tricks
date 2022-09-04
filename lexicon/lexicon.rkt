@@ -45,7 +45,7 @@
         (values
          (~a lexicon-base bookmark)
          (make-attachment
-          (string->bytes/utf-8
+          (string->bytes/latin-1
            (string-join ((call-trick 'libsplit-text* #f) text 80) "\n"))
           "matched.txt"
           ".txt"))]))
