@@ -13,7 +13,7 @@
               (define title (hash-ref en-us (string->symbol name)))
               (define address (~>> path (find-relative-path "entries") (path-replace-extension _ "") path->string))
               (define text (~>> pages
-                                (filter (λ~> (hash-ref 'type) (equal? "text")))
+                                (filter (λ~> (hash-ref 'type) (member '("quest" "text"))))
                                 (map (λ~> (hash-ref 'text)
                                           string->symbol
                                           (hash-ref en-us _)
