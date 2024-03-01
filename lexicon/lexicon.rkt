@@ -6,8 +6,9 @@
     [(libdata-lexicon) entries]
     [(libsplit-text*) (λ (x _) (list x))]))
 (define (make-attachment payload _name _mime) payload)
-(define string-args "spectrolus")
+(define string-args "flugel")
 
+(define ignored-words '( "a" "and" "in" "of" "the" "to" "with"))
 (define lexicon-base "https://botaniamod.net/lexicon.html#")
 
 (define (edit-distance str1 str2)
@@ -31,8 +32,8 @@
   (define arg-words (string-split (string-foldcase arg)))
   (for/sum ([arg-str arg-words])
     (~>> (for/list ([title-str title-words]
-                    #:when (<= (string-length arg-str) (string-length title-str)))
-           (edit-distance arg-str (substring title-str 0 (string-length arg-str))))
+                    #:unless (member title-str ignored-words))
+           (edit-distance arg-str title-str))
          (cons +inf.0)
          (apply min))))
 
